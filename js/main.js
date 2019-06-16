@@ -10,15 +10,37 @@ document.querySelector('.search').addEventListener('keypress', checkIfEnter);
 
 document.body.onload = () => {
     checkQueryStr();
-    handleUserLoc();
+
 
 }
 
 function checkQueryStr() {
     const urlStr = window.location.href;
     console.log(urlStr)
+    let latLoc = urlStr.indexOf('?lat=');
+    let lngLoc = urlStr.indexOf('&lng=');
+    let newLet = '';
+    let newLng = '';
+
+
+    if (urlStr.includes('?lat=') && urlStr.includes('&lng=')) {
+        for (let i = urlStr[latLoc + 5]; i < urlStr[lngLoc]; i++) {
+            newLet += urlStr[i];
+        }
+        for (let j = urlStr[lngLoc + 5]; j < urlStr.length; j++) {
+            newLng += urlStr[j];
+        }
+
+        newLet = Number(newLet);
+        newLng = Number(newLng);
+        mapService.initMap(newLet, newLng);
+        mapService.panTo(newLet, newLng);
+    } else {
+        handleUserLoc();
+    }
 
 }
+
 
 
 function handleUserLoc() {
