@@ -33,8 +33,12 @@ function checkQueryStr() {
 
         newLet = Number(newLet);
         newLng = Number(newLng);
-        mapService.initMap(newLet, newLng);
-        mapService.panTo(newLet, newLng);
+        mapService.initMap(newLet, newLng)
+            .then(
+                () => {
+                    mapService.addMarker({ lat: newLet, lng: newLng });
+                }
+            ).catch(console.warn);
     } else {
         handleUserLoc();
     }
