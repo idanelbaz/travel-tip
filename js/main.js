@@ -32,7 +32,8 @@ function checkQueryStr() {
             newLng += urlStr[j];
 
         }
-        console.log(newLet, newLng);
+        console.log(newLet);
+        console.log(newLng);
 
         newLet = Number(newLet);
         newLng = Number(newLng);
