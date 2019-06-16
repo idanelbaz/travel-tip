@@ -26,14 +26,17 @@ function checkQueryStr() {
     if (urlStr.includes('?lat=') && urlStr.includes('&lng=')) {
         for (let i = urlStr[latLoc + 5]; i < urlStr[lngLoc]; i++) {
             newLet += urlStr[i];
+
         }
         for (let j = urlStr[lngLoc + 5]; j < urlStr.length; j++) {
             newLng += urlStr[j];
+
         }
+        console.log(newLet, newLng);
 
         newLet = Number(newLet);
         newLng = Number(newLng);
-        console.log(newLet, newLng);
+
         mapService.initMap(newLet, newLng)
             .then(
                 () => {
