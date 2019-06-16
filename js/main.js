@@ -24,11 +24,11 @@ function checkQueryStr() {
 
 
     if (urlStr.includes('?lat=') && urlStr.includes('&lng=')) {
-        for (let i = urlStr[latLoc + 5]; i < urlStr[lngLoc]; i++) {
+        for (let i = latLoc + 5; i < lngLoc; i++) {
             newLet += urlStr[i];
 
         }
-        for (let j = urlStr[lngLoc + 5]; j < urlStr.length; j++) {
+        for (let j = lngLoc + 5; j < urlStr.length; j++) {
             newLng += urlStr[j];
 
         }
