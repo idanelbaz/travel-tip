@@ -33,6 +33,7 @@ function checkQueryStr() {
 
         newLet = Number(newLet);
         newLng = Number(newLng);
+        console.log(newLet, newLng);
         mapService.initMap(newLet, newLng)
             .then(
                 () => {
